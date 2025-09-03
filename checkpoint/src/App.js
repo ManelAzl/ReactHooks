@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import MovieList from './components/MovieList';
-import Filter from './components/Filter';
-import AddMovie from './components/AddMovie';
+import HomePage from './components/HomePage';
+import MovieDetail from './components/MovieDetail'
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -51,27 +50,30 @@ function App() {
   });
 
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <h1>Movie App</h1>
-      </header>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <Filter 
-              filterTitle={filterTitle}
-              filterRating={filterRating}
-              setFilterTitle={setFilterTitle}
-              setFilterRating={setFilterRating}
-            />
-          </div>
-          <div className="col-md-6">
-            <AddMovie onAddMovie={addMovie} />
-          </div>
-        </div>
-        <MovieList movies={filteredMovies} />
+      <Routes>
+        <Route 
+        path="/"
+        element={
+          <HomePage
+          movies={movies}
+          filterTitle={filterTitle}
+          filterRating={filterRating}
+          setFilterTitle={setFilterTitle}
+          setFilterRating={setFilterRating}
+          addMovie={addMovie}
+          filteredMovies={filteredMovies}
+          />
+        }
+        />
+        <Route
+        path="/movie/:id"
+        element={<MovieDetail movies={movies} />}
+        />
+      </Routes>
       </div>
-    </div>
+      </Router>
   );
 }
 

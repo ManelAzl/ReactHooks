@@ -10,7 +10,7 @@ const MovieList = ({ movies }) => {
         {movies.length > 0 ? (
           movies.map(movie => (
             <div key={movie.id} className="col-md-4 mb-4">
-              <Link to={`/movie/${movie.id}` className="text-decoration-none"}>
+              <Link to={`/movie/${movie.id}`} className="text-decoration-none">
               <MovieCard movie={movie} />
               </Link>
             </div>

@@ -3,13 +3,13 @@ import MovieList from './MovieList';
 import Filter from './Filter';
 import AddMovie from './AddMovie';
 
-funtion HomePage({ movies, filterTitle, filterRating, setFilterTitle, setFilterRating, addMovie ,filteredMovie}) {
+function HomePage({ movies, filterTitle, filterRating, setFilterTitle, setFilterRating, addMovie, filteredMovies }) {
     return (
         <div>
             <header className="App-header">
                 <h1>Movie App</h1>
             </header>
-            <div classNmae="container">
+            <div className="container">
                 <div className="row">
                     <div className="col-md-6">
                         <Filter
@@ -22,11 +22,15 @@ funtion HomePage({ movies, filterTitle, filterRating, setFilterTitle, setFilterR
                     <div className="col-md-6">
                         <AddMovie onAddMovie={addMovie} />
                     </div>
-                    <MovieList movies={filteredMovies} />
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <MovieList movies={filteredMovies} />
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
 
-export defalut HomePage;
+export default HomePage;
